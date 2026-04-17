@@ -2,6 +2,7 @@ import {
   Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn,
 } from 'typeorm';
 import { Component } from './component.entity';
+import { PurchaseRequisition } from './purchase-requisition.entity';
 
 @Entity('pr_items')
 export class PrItem {
@@ -11,12 +12,14 @@ export class PrItem {
   @Column()
   purchaseRequisitionId: number;
 
-  purchaseRequisition: any;
+  @ManyToOne(() => PurchaseRequisition, (pr) => pr.items, { onDelete: 'CASCADE' })
+  @JoinColumn({ name: 'purchaseRequisitionId' })
+  purchaseRequisition: PurchaseRequisition;
 
   @Column()
   componentId: number;
 
-  @ManyToOne(() => Component, { eager: true })
+  @ManyToOne(() => Component, { eager: false })
   @JoinColumn({ name: 'componentId' })
   component: Component;
 

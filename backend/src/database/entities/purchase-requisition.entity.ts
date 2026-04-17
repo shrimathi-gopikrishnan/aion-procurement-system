@@ -74,7 +74,7 @@ export class PurchaseRequisition {
   @Column({ default: 1 })
   version: number;
 
-  @OneToMany(() => PrItem, (item) => item.purchaseRequisition, { cascade: true, eager: true })
+  @OneToMany(() => PrItem, (item) => item.purchaseRequisition, { cascade: true })
   items: PrItem[];
 
   @CreateDateColumn()
