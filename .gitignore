@@ -20,7 +20,7 @@ out/
 *.db
 *.sqlite
 *.sqlite3
-backend/data/
+backend/data/*.db
 
 # File uploads
 backend/uploads/
